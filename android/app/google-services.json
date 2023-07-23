@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "378090759929",
+    "project_id": "appppp-f36df",
+    "storage_bucket": "appppp-f36df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378090759929:android:24ebef777cf022cb1ce428",
+        "android_client_info": {
+          "package_name": "com.notrew.testing_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378090759929-gmo6uhpp49ede03l7i6gsjqbisa1i48r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5Vs9tV82lSU6AvNrV2wWpBezZy9zmI_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378090759929-gmo6uhpp49ede03l7i6gsjqbisa1i48r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
