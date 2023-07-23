@@ -57,8 +57,7 @@ class User extends Equatable {
     );
   }
 
-  @override
-  List<Object?> get props => [_id, _name, _email, _photo, _isAdmin, _isFono];
+
 
   Map<String, dynamic> toJson() {
     return {
@@ -71,5 +70,7 @@ class User extends Equatable {
     };
   }
 
+  @override
+  List<Object?> get props => [_id, _name, _email, _photo, _isAdmin, _isFono];
 
 }
