@@ -16,13 +16,10 @@ class FirebaseAuthImp extends AuthRepository{
   @override
   Future<UserEntity.User?> login({required LoginCredentials loginCredentials})async {
    try{
-     final  response = await _firebaseAuth.signInWithEmailAndPassword(email: loginCredentials.email, password: loginCredentials.password);
+     final response = await _firebaseAuth.signInWithEmailAndPassword(email: loginCredentials.email, password: loginCredentials.password);
      final userEmail = response.user?.email;
-     if(userEmail == null){
-       throw const InternalServerErrorException(code: 401, message: "Cannot login now, try again later");
-      }
-     final user = _getUser(email: userEmail);
-     return user;
+
+    return _getUser(email: userEmail!);
 
    }on FirebaseException catch(err){
      FirebaseHandlerException.handleException(err);
@@ -30,7 +27,7 @@ class FirebaseAuthImp extends AuthRepository{
   }
 
   Future<UserEntity.User?> _getUser({required String email})async{
-    final response = await _firebaseFirestore.collection('users').where(email, isEqualTo: email).get();
+    final response = await _firebaseFirestore.collection('users').where('email', isEqualTo: email).get();
     final userData = response.docs.firstOrNull;
     if(userData == null){
       return null;
