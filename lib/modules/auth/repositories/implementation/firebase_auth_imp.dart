@@ -22,7 +22,7 @@ class FirebaseAuthImp extends AuthRepository{
     return _getUser(email: userEmail!);
 
    }on FirebaseException catch(err){
-     FirebaseHandlerException.handleException(err);
+    throw FirebaseHandlerException.handleException(err);
    }
   }
 

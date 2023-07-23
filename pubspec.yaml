@@ -44,6 +44,7 @@ dependencies:
   firebase_auth_mocks: ^0.12.0
   fake_cloud_firestore: ^2.4.1+1
   matcher: ^0.12.15
+  mock_exceptions: ^0.8.2
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
+import 'package:mock_exceptions/mock_exceptions.dart';
 import 'package:testing_app/modules/auth/entity/user.dart' as Us;
 import 'package:faker/faker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -64,27 +65,28 @@ void main(){
 
 
     });
+    test("should return app failure", () async {
+      firebaseAuthMock = MockFirebaseAuth(mockUser: MockUser(email: EMAIL, displayName: NAME, photoURL: PHOTO, uid: ID));
 
-      // Define a test that checks if the `signInWithEmailAndPassword` method returns
-      // a successful response.
-      test('signInWithEmailAndPassword returns a successful response', () async {
-      MockFirebaseAuth mockFirebaseAuth = MockFirebaseAuth();
-        // Mock the `signInWithEmailAndPassword` method to return a successful
-        // response.
-        when(()=>mockFirebaseAuth.signInWithEmailAndPassword(
-            email: 'test@example.com', password: 'password') )
-            .thenAnswer((_)async => MockUser());
+      final sut = FirebaseAuthImp(firebaseAuth: firebaseAuthMock, firestore: firestoreMock);
+      Map<String, dynamic> jsonData = {
+        'id': ID,
+        'name': NAME,
+        'email': EMAIL,
+        'photo': PHOTO,
+        'isAdmin': ISADMIN,
+        'isFono': ISFONO,
+      };
 
-        // Call the `signInWithEmailAndPassword` method.
-        User user = (await mockFirebaseAuth.signInWithEmailAndPassword(
-            email: 'test@example.com', password: 'password')) as User;
+      await firestoreMock.collection("users").add(jsonData);
 
-        // Assert that the user is not null.
-        expect(user, isNotNull);
+      whenCalling(Invocation.method(#signInWithEmailAndPassword, null)).on(firebaseAuthMock).thenThrow(FirebaseAuthException(code: "user-not-found"));
+      final credential = LoginCredentials.create(email: EMAIL, password: PASSWORD);
 
-
+      expect(sut.login(loginCredentials: credential), throwsA(isA<AppException>()));
 
     });
+
 
   });
 }
