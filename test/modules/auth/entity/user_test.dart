@@ -19,6 +19,7 @@ void main(){
      ISADMIN = faker.randomGenerator.boolean();
 
   });
+
   group('User entity', () {
     test("should be initialized with correctly params", () {
 
