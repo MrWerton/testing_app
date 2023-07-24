@@ -69,6 +69,16 @@ class User extends Equatable {
       'isFono': _isFono,
     };
   }
+  factory User.empty() {
+    return const User._(
+      id: '',
+      name: '',
+      email: '',
+      photo: '',
+      isAdmin:  false,
+      isFono:  false,
+    );
+  }
 
   @override
   List<Object?> get props => [_id, _name, _email, _photo, _isAdmin, _isFono];

@@ -15,7 +15,6 @@ import 'package:testing_app/shared/exceptions/app_exceptions.dart';
 
 void main(){
   late final FirebaseFirestore firestoreMock;
-  late final FirebaseAuth firebaseAuthMock;
 
 
   late final String ID;
@@ -43,7 +42,7 @@ void main(){
 
   group("firebaseAuthImp", () {
     test("should do login correctly", () async {
-      firebaseAuthMock = MockFirebaseAuth(mockUser: MockUser(email: EMAIL, displayName: NAME, photoURL: PHOTO, uid: ID));
+      final firebaseAuthMock = MockFirebaseAuth(mockUser: MockUser(email: EMAIL, displayName: NAME, photoURL: PHOTO, uid: ID));
 
       final sut = FirebaseAuthImp(firebaseAuth: firebaseAuthMock, firestore: firestoreMock);
       Map<String, dynamic> jsonData = {
@@ -66,7 +65,7 @@ void main(){
 
     });
     test("should return app failure", () async {
-      firebaseAuthMock = MockFirebaseAuth(mockUser: MockUser(email: EMAIL, displayName: NAME, photoURL: PHOTO, uid: ID));
+      final firebaseAuthMock = MockFirebaseAuth(mockUser: MockUser(email: EMAIL, displayName: NAME, photoURL: PHOTO, uid: ID));
 
       final sut = FirebaseAuthImp(firebaseAuth: firebaseAuthMock, firestore: firestoreMock);
       Map<String, dynamic> jsonData = {
