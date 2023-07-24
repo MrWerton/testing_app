@@ -47,8 +47,11 @@ void main(){
       'isAdmin': ISADMIN,
       'isFono': ISFONO,
     };
+
     await tester.enterText(find.byType(TextFormField).at(0), EMAIL);
     await tester.enterText(find.byType(TextFormField).at(1), PASSWORD);
+
+
     when(()=>authRepository.login(loginCredentials: LoginCredentials.create(email: EMAIL, password: PASSWORD))).thenAnswer((_) async=> User.fromJson(jsonData));
 
     await tester.tap(find.text('login'));
