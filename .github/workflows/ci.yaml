@@ -1,6 +1,6 @@
 name: ci-flutter-workflow
 on:
-  push:
+  pull_request:
     branches:
       - development
 
