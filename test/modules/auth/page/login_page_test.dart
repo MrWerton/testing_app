@@ -44,7 +44,7 @@ void main(){
       'name': NAME,
       'email': EMAIL,
       'photo': PHOTO,
-      'isAdmin': ISADMIN,
+      'isAdmin': false,
       'isFono': ISFONO,
     };
 

@@ -39,7 +39,7 @@ void main(){
       'name': NAME,
       'email': EMAIL,
       'photo': PHOTO,
-      'isAdmin': ISADMIN,
+      'isAdmin': false,
       'isFono': ISFONO,
     };
 
@@ -59,7 +59,7 @@ void main(){
       'name': NAME,
       'email': EMAIL,
       'photo': PHOTO,
-      'isAdmin': ISADMIN,
+      'isAdmin': false,
       'isFono': ISFONO,
     };
     final user = User.create(id: ID, name: NAME, email: EMAIL, photo: PHOTO, isFono: ISFONO);
