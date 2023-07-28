@@ -40,7 +40,7 @@ void main(){
 
   });
 
-  group("firebase Auth Imp", () {
+  group("firebase Auth Implemenation", () {
     test("should do login correctly", () async {
       final firebaseAuthMock = MockFirebaseAuth(mockUser: MockUser(email: EMAIL, displayName: NAME, photoURL: PHOTO, uid: ID));
 
