@@ -22,3 +22,11 @@ jobs:
 
       - name: Run tests
         run: flutter test
+      - name: Run 'flutter build'
+        run: flutter build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: built_app
+          path: build/ 
